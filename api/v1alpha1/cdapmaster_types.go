@@ -38,6 +38,9 @@ type CDAPMasterSpec struct {
 	UserInterfaceImage string `json:"userInterfaceImage,omitempty"`
 	// ImagePullPolicy is the policy for pulling docker images on Pod creation.
 	ImagePullPolicy corev1.PullPolicy `json:"imagePullPolicy,omitempty"`
+	// ImagePullSecrets is a optional list of references to secrets in the same
+	// namespace to use for pulling any of the images used by this PodSpec.
+	ImagePullSecrets []corev1.LocalObjectReference `json:"imagePullSecrets,omitempty"`
 	// SecuritySecret is secret that contains security related configurations for CDAP.
 	SecuritySecret string `json:"securitySecret,omitempty"`
 	// ServiceAccountName is the service account for all the service pods.

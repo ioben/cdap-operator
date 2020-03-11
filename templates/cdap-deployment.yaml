@@ -39,6 +39,12 @@ spec:
       {{if .Base.ServiceAccountName}}
       serviceAccountName: {{.Base.ServiceAccountName}}
       {{end}}
+      {{if .Base.ImagePullSecrets}}
+      imagePullSecrets:
+      {{range $r := .Base.ImagePullSecrets}}
+      - name: {{$r.Name}}
+      {{end}}
+      {{end}}
       nodeSelector:
         {{range $k,$v := .Base.NodeSelector}}
         {{$k}}: "{{$v}}"
