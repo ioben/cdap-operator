@@ -43,6 +43,8 @@ type CDAPMasterSpec struct {
 	ImagePullSecrets []corev1.LocalObjectReference `json:"imagePullSecrets,omitempty"`
 	// SecuritySecret is secret that contains security related configurations for CDAP.
 	SecuritySecret string `json:"securitySecret,omitempty"`
+	// TlsSecret is secret that contains TLS related configurations for CDAP including a certificate, key, and optionally a CA.
+	TlsSecret string `json:"tlsSecret,omitempty"`
 	// ServiceAccountName is the service account for all the service pods.
 	ServiceAccountName string `json:"serviceAccountName,omitempty"`
 	// LocationURI is an URI specifying an object storage for CDAP.

@@ -60,6 +60,11 @@ spec:
               mountPath: /etc/cdap/security
               readOnly: true
             {{end}}
+            {{if .TlsSecret}}
+            - name: cdap-tls
+              mountPath: /etc/cdap/tls
+              readOnly: true
+            {{end}}
       volumes:
         - name: cdap-conf
           configMap:
@@ -67,10 +72,15 @@ spec:
         - name: hadoop-conf
           configMap:
             name: {{.HConf}}
-      {{if .SecuritySecret}}
+        {{if .SecuritySecret}}
         - name: cdap-security
           secret:
             secretName: {{.SecuritySecret}}
-      {{end}}
+        {{end}}
+        {{if .TlsSecret}}
+        - name: cdap-tls
+          secret:
+            secretName: {{.TlsSecret}}
+        {{end}}
       restartPolicy: Never
   backoffLimit: {{.BackoffLimit}}

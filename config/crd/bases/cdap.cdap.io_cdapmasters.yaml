@@ -1361,6 +1361,10 @@ spec:
                 config> which will create a separate system config file with entry
                 value as file content.
               type: object
+            tlsSecret:
+              description: TlsSecret is secret that contains TLS related configurations
+                for CDAP including a certificate, key, and optionally a CA.
+              type: string
             userInterface:
               description: UserInterface is specification for the CDAP UI service.
               properties:

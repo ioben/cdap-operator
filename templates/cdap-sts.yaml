@@ -93,6 +93,11 @@ spec:
               mountPath: /etc/cdap/security
               readOnly: true
             {{end}}
+            {{if $.Base.TlsSecret}}
+            - name: cdap-tls
+              mountPath: /etc/cdap/tls
+              readOnly: true
+            {{end}}
       {{end}}
       containers:
       {{range $c := .Containers}}
@@ -148,6 +153,11 @@ spec:
               mountPath: /etc/cdap/security
               readOnly: true
             {{end}}
+            {{if $.Base.TlsSecret}}
+            - name: cdap-tls
+              mountPath: /etc/cdap/tls
+              readOnly: true
+            {{end}}
             {{range $k,$v := $.Base.ConfigMapVolumes}}
             - name: cdap-cm-vol-{{$k}}
               mountPath: {{$v}}
@@ -176,6 +186,11 @@ spec:
         - name: cdap-security
           secret:
             secretName: {{$.Base.SecuritySecret}}
+        {{end}}
+        {{if $.Base.TlsSecret}}
+        - name: cdap-tls
+          secret:
+            secretName: {{$.Base.TlsSecret}}
         {{end}}
         {{range $k,$v := $.Base.ConfigMapVolumes}}
         - name: cdap-cm-vol-{{$k}}

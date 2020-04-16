@@ -130,6 +130,7 @@ type BaseSpec struct {
 	RuntimeClassName   string                        `json:"runtimeClassName,omitempty"`
 	PriorityClassName  string                        `json:"priorityClassName,omitempty"`
 	SecuritySecret     string                        `json:"securitySecret,omitempty"`
+	TlsSecret          string                        `json:"tlsSecret,omitempty"`
 	CConf              string                        `json:"cdapConf,omitempty"`
 	HConf              string                        `json:"hadoopConf,omitempty"`
 	SysAppConf         string                        `json:"sysAppConf,omitempty"`
@@ -147,6 +148,7 @@ func newBaseSpec(master *v1alpha1.CDAPMaster, name string, labels map[string]str
 	s.RuntimeClassName = ""
 	s.PriorityClassName = ""
 	s.SecuritySecret = master.Spec.SecuritySecret
+	s.TlsSecret = master.Spec.TlsSecret
 	s.CConf = cconf
 	s.HConf = hconf
 	s.SysAppConf = sysappconf
@@ -378,6 +380,7 @@ type VersionUpgradeJobSpec struct {
 	ReferentApiVersion string            `json:"referentApiVersion,omitempty"`
 	ReferentUID        types.UID         `json:"referentUID,omitempty"`
 	SecuritySecret     string            `json:"securitySecret,omitempty"`
+	TlsSecret          string            `json:"tlsSecret,omitempty"`
 	StartTimeMs        int64             `json:"startTimeMs,omitempty"`
 	Namespace          string            `json:"namespace,omitempty"`
 	CConf              string            `json:"cdapConf,omitempty"`
@@ -398,6 +401,7 @@ func newUpgradeJobSpec(master *v1alpha1.CDAPMaster, name string, labels map[stri
 	s.ReferentApiVersion = master.APIVersion
 	s.ReferentUID = master.UID
 	s.SecuritySecret = master.Spec.SecuritySecret
+	s.TlsSecret = master.Spec.TlsSecret
 	s.Namespace = master.Namespace
 	s.StartTimeMs = startTimeMs
 	s.CConf = cconf
