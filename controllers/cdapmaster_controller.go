@@ -121,6 +121,9 @@ func ApplyDefaults(resource interface{}) {
 	if spec.Config == nil {
 		spec.Config = make(map[string]string)
 	}
+	if spec.HadoopConfig == nil {
+		spec.HadoopConfig = make(map[string]string)
+	}
 	// Set the local data directory
 	spec.Config[confLocalDataDirKey] = confLocalDataDirVal
 

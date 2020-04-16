@@ -133,6 +133,13 @@ func (in *CDAPMasterSpec) DeepCopyInto(out *CDAPMasterSpec) {
 		*out = make([]v1.LocalObjectReference, len(*in))
 		copy(*out, *in)
 	}
+	if in.HadoopConfig != nil {
+		in, out := &in.HadoopConfig, &out.HadoopConfig
+		*out = make(map[string]string, len(*in))
+		for key, val := range *in {
+			(*out)[key] = val
+		}
+	}
 	if in.Config != nil {
 		in, out := &in.Config, &out.Config
 		*out = make(map[string]string, len(*in))

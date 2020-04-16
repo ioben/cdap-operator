@@ -209,6 +209,12 @@ spec:
                 mount path. This adds ConfigMap data to the directory specified by
                 the volume mount path.
               type: object
+            hadoopConfig:
+              additionalProperties:
+                type: string
+              description: Hadoop config is a set of configurations that goes into
+                core-site.xml.
+              type: object
             image:
               description: Image is the docker image name for the CDAP backend.
               type: string

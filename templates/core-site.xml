@@ -19,4 +19,10 @@
     <name>fs.defaultFS</name>
     <value>{{html .Master.Spec.LocationURI}}</value>
   </property>
+{{range $k,$v := .Master.Spec.HadoopConfig}}
+  <property>
+    <name>{{html $k}}</name>
+    <value>{{html $v}}</value>
+  </property>
+{{end}}
 </configuration>

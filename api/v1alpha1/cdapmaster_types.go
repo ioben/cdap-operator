@@ -47,6 +47,8 @@ type CDAPMasterSpec struct {
 	ServiceAccountName string `json:"serviceAccountName,omitempty"`
 	// LocationURI is an URI specifying an object storage for CDAP.
 	LocationURI string `json:"locationURI"`
+	// Hadoop config is a set of configurations that goes into core-site.xml.
+	HadoopConfig map[string]string `json:"hadoopConfig,omitempty"`
 	// Config is a set of configurations that goes into cdap-site.xml.
 	Config map[string]string `json:"config,omitempty"`
 	// ConfigMapVolumes defines a map from ConfigMap names to volume mount path.
