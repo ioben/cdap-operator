@@ -370,23 +370,24 @@ func (s *DeploymentPlanSpec) toString() (string, error) {
 }
 
 type VersionUpgradeJobSpec struct {
-	Image              string            `json:"image,omitempty"`
-	JobName            string            `json:"jobName,omitempty"`
-	Labels             map[string]string `json:"labels,omitempty"`
-	HostName           string            `json:"hostName,omitempty"`
-	BackoffLimit       int32             `json:"backoffLimit,omitempty"`
-	ReferentName       string            `json:"referentName,omitempty"`
-	ReferentKind       string            `json:"referentKind,omitempty"`
-	ReferentApiVersion string            `json:"referentApiVersion,omitempty"`
-	ReferentUID        types.UID         `json:"referentUID,omitempty"`
-	SecuritySecret     string            `json:"securitySecret,omitempty"`
-	TlsSecret          string            `json:"tlsSecret,omitempty"`
-	StartTimeMs        int64             `json:"startTimeMs,omitempty"`
-	Namespace          string            `json:"namespace,omitempty"`
-	CConf              string            `json:"cdapConf,omitempty"`
-	HConf              string            `json:"hadoopConf,omitempty"`
-	PreUpgrade         bool              `json:"preUpgrade,omitempty"`
-	PostUpgrade        bool              `json:"postUpgrade,omitempty"`
+	Image              string                        `json:"image,omitempty"`
+	ImagePullSecrets   []corev1.LocalObjectReference `json:"imagePullSecrets,omitempty"`
+	JobName            string                        `json:"jobName,omitempty"`
+	Labels             map[string]string             `json:"labels,omitempty"`
+	HostName           string                        `json:"hostName,omitempty"`
+	BackoffLimit       int32                         `json:"backoffLimit,omitempty"`
+	ReferentName       string                        `json:"referentName,omitempty"`
+	ReferentKind       string                        `json:"referentKind,omitempty"`
+	ReferentApiVersion string                        `json:"referentApiVersion,omitempty"`
+	ReferentUID        types.UID                     `json:"referentUID,omitempty"`
+	SecuritySecret     string                        `json:"securitySecret,omitempty"`
+	TlsSecret          string                        `json:"tlsSecret,omitempty"`
+	StartTimeMs        int64                         `json:"startTimeMs,omitempty"`
+	Namespace          string                        `json:"namespace,omitempty"`
+	CConf              string                        `json:"cdapConf,omitempty"`
+	HConf              string                        `json:"hadoopConf,omitempty"`
+	PreUpgrade         bool                          `json:"preUpgrade,omitempty"`
+	PostUpgrade        bool                          `json:"postUpgrade,omitempty"`
 }
 
 func newUpgradeJobSpec(master *v1alpha1.CDAPMaster, name string, labels map[string]string, startTimeMs int64, cconf, hconf string) *VersionUpgradeJobSpec {
